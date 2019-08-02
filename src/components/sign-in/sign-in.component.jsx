@@ -3,7 +3,7 @@ import React from 'react';
 import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component'
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -13,9 +13,18 @@ class SignIn extends React.Component {
             password: ''
         }
     }
-    handleSubmit = event =>  {
+    handleSubmit = async event =>  {
         event.preventDefault();
-        this.setState({email:'', password:''})
+
+        const { email, password } = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password)
+            this.setState({email:'', password:''})    
+        } catch (error) {
+            console.log(error)
+        }
+
     }   
 
     handleChange = event => {
@@ -29,18 +38,19 @@ class SignIn extends React.Component {
                 <h2 className='title'>I already have an account</h2>
                 <span className='title'>Sign in with your email and password</span>
                 <form onSubmit={this.handleSubmit}>
-                    <FormInput  onChange={this.handleChange}
+                    <FormInput  handleChange={this.handleChange}
                                 label='email'
                                 name='email' 
                                 type='email'
                                 value={this.state.email}
                                 required
                     />
-                    <FormInput  onChange={this.handleChange}
+                    <FormInput  handleChange={this.handleChange}
                                 label='password'
                                 name='password' 
                                 type='password'
                                 value={this.state.password} 
+                                required
                     />
                     <div className='buttons'>
                     <CustomButton type='submit'>Sign IN</CustomButton>
