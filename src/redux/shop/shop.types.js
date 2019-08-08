@@ -1,5 +1,7 @@
-const shopActionTypes = {
-    UPDATE_COLLECTION: 'UPDATE_COLLECTION'
+const ShopActionTypes = {
+    FETCH_COLLECTION_START: 'FETCH_COLLECTION_START',
+    FETCH_COLLECTION_SUCCESS: 'FETCH_COLLECTION_SUCCESS',
+    FETCH_COLLECTION_FAIL: 'FETCH_COLLECTION_FAIL'
 }
 
-export default shopActionTypes
+export default ShopActionTypes
