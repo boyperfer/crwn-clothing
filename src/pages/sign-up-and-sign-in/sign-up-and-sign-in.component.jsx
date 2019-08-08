@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './sign-up-and-sign-in.styles.scss';
+import { SignUpAndSignInContainer } from './sign-up-and-sign-in.styles'
 import SignIn from '../../components/sign-in/sign-in.component'
 import SignUp from '../../components/sign-up/sign-up.component'
 
 const SignInAndSignUp = () => (
-    <div className='sign-in-and-sign-up'>
+    <SignUpAndSignInContainer>
         <SignIn/>
         <SignUp/>
-    </div>
+    </SignUpAndSignInContainer>
 )
 
 export default SignInAndSignUp;
