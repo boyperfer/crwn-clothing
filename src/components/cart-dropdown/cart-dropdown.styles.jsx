@@ -23,7 +23,7 @@ export const EmptyMassageContainer = styled.span`
 `
 
 export const CartItemsContainer = styled.div`
-    height: 240px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     overflow: scroll;
